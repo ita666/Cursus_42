@@ -1,42 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yanthoma <yanthoma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/04 00:54:36 by yanthoma          #+#    #+#             */
-/*   Updated: 2022/04/04 00:54:36 by yanthoma         ###   ########.fr       */
+/*   Created: 2022/04/14 13:11:37 by yanthoma          #+#    #+#             */
+/*   Updated: 2022/04/14 13:11:37 by yanthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	if (!s)
-		return (NULL);
-	while (*s)
-	{
-		if ((unsigned char)*s == (unsigned char)c)
-			return ((char *)s);
-		s++;
-	}
-	if (*s == c)
-		return ((char *)s);
-	return (NULL);
+		if (*lst == ((void *)0))
+			*lst = new;
+		else
+			ft_lstadd_back(&((*lst)->next), new);
 }
-/*
+
 #include <stdio.h>
-#include <string.h>
-int main (void)
+/*
+int main (int ac, char **av)
 {
-    char *c = "tripouille";
-    char *c1 = "tripouille";
-    char d = 'v';
-
-    printf("%s\n",ft_strchr(c1, 't' + 256));
-    //printf("%s\n", strchr(c, 300));
-    printf("%p\n", NULL);
-
+	(void)ac;
+	t_list *elem;
+	int i = 2;
+	elem = ft_lstnew((void *)av[1]);
+	while (av[i])
+	{
+		ft_lstadd_back(&elem, ft_lstnew((void *)av[i]));
+		i++;
+	}
+	while (elem)
+	{
+		printf("%s\n", (char *)elem->content);
+		elem = elem->next;
+	}
 }*/

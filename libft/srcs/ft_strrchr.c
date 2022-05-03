@@ -17,12 +17,18 @@ char	*ft_strrchr(const char *s, int c)
 	char	*temp;
 
 	temp = NULL;
+	if (!s)
+		return (temp);
+	if (c == 0)
+		return ((char *)(s + ft_strlen(s)));
 	while (*s)
 	{
 		if (*s == c)
 			temp = (char *)s;
 		s++;
 	}
+	if (*s == (char)c)
+		return((char *)s);
 	return (temp);
 }
 /*

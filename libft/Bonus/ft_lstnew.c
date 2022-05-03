@@ -1,42 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yanthoma <yanthoma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/04 00:54:36 by yanthoma          #+#    #+#             */
-/*   Updated: 2022/04/04 00:54:36 by yanthoma         ###   ########.fr       */
+/*   Created: 2022/04/13 15:56:48 by yanthoma          #+#    #+#             */
+/*   Updated: 2022/04/13 15:56:48 by yanthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+t_list	*ft_lstnew(void *content)
 {
-	if (!s)
+	t_list	*dest;
+
+	dest = malloc(sizeof(*dest));
+	if (!dest)
 		return (NULL);
-	while (*s)
-	{
-		if ((unsigned char)*s == (unsigned char)c)
-			return ((char *)s);
-		s++;
-	}
-	if (*s == c)
-		return ((char *)s);
-	return (NULL);
+	dest->content = content;
+	dest->next = NULL;
+	return (dest);
 }
-/*
-#include <stdio.h>
-#include <string.h>
-int main (void)
+
+/*#include <stdio.h>
+int        main(void)
 {
-    char *c = "tripouille";
-    char *c1 = "tripouille";
-    char d = 'v';
-
-    printf("%s\n",ft_strchr(c1, 't' + 256));
-    //printf("%s\n", strchr(c, 300));
-    printf("%p\n", NULL);
-
+    char *str = "fais chier";
+	t_list    *elem;
+    elem = ft_lstnew(str);
+    printf("%s\n", (char *)elem->content);
 }*/

@@ -1,53 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   Untitled-1                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yanthoma <yanthoma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/04 01:12:49 by yanthoma          #+#    #+#             */
-/*   Updated: 2022/04/04 01:12:49 by yanthoma         ###   ########.fr       */
+/*   Created: 2022/04/15 20:03:07 by yanthoma          #+#    #+#             */
+/*   Updated: 2022/04/15 20:03:07 by yanthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
-{
-	size_t	i;
-	size_t	l;
 
-	i = 0;
-	l = 0;
-	while (src[l])
-		l++;
-	if (l + 1 < size)
+void	ft_lstiter(t_list *lst, void (*f)(void *))
+{
+	if (lst && f)
 	{
-		while (i < l + 1)
+		while (lst->next != NULL)
 		{
-			dst[i] = src[i];
-			i++;
+			(*f)(lst->content);
+			lst = lst->next;
 		}
-	}
-	else if (size != 0)
-	{
-		while (i < size - 1)
-		{
-			dst[i] = src[i];
-			i++;
-		}
-		dst[size - 1] = '\0';
-	}
-	return (l);
+		(*f)(lst->content);
+	}	
 }
 /*
 #include <stdio.h>
-int main (void)
+
+static void ft_print(void *elem)
 {
-    char c[7] = "untest";
-    char d[4] = "foi";
-    ft_strlcpy(c, d, 3);
+    printf("%s\n", (char *)elem);
+}
 
-    printf("%s\n",c);
-
+int main (int ac, char **av)
+{
+	(void)ac;
+	t_list *elem;
+	int i = 2;
+	elem = ft_lstnew((void *)av[1]);
+	while (av[i])
+	{
+		ft_lstadd_back(&elem, ft_lstnew((void *)av[i]));
+		i++;
+	}
+	ft_lstiter(elem, ft_print);
 }*/

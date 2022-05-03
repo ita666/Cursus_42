@@ -1,53 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   Untitled-1                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yanthoma <yanthoma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/04 01:12:49 by yanthoma          #+#    #+#             */
-/*   Updated: 2022/04/04 01:12:49 by yanthoma         ###   ########.fr       */
+/*   Created: 2022/04/13 21:33:22 by yanthoma          #+#    #+#             */
+/*   Updated: 2022/04/13 21:33:22 by yanthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	size_t	i;
-	size_t	l;
-
-	i = 0;
-	l = 0;
-	while (src[l])
-		l++;
-	if (l + 1 < size)
-	{
-		while (i < l + 1)
-		{
-			dst[i] = src[i];
-			i++;
-		}
-	}
-	else if (size != 0)
-	{
-		while (i < size - 1)
-		{
-			dst[i] = src[i];
-			i++;
-		}
-		dst[size - 1] = '\0';
-	}
-	return (l);
+	new->next = *lst;
+	*lst = new;
 }
 /*
 #include <stdio.h>
-int main (void)
+int        main(int ac, char **av)
 {
-    char c[7] = "untest";
-    char d[4] = "foi";
-    ft_strlcpy(c, d, 3);
+	(void)ac;
+	t_list    *elem;
+	t_list		*add;
 
-    printf("%s\n",c);
+	add = ft_lstnew("pourquoi");
+	elem = ft_lstnew((void *)av[1]);
+	int i = 2;
+	
+	while (av[i])
+	{
+		ft_lstadd_front(&elem, ft_lstnew((void *)av[i]));
+		i++;
+	}
 
-}*/
+    ft_lstadd_front(&elem, add);
+    while (elem != NULL)
+	{
+		printf("%s\n", (char *)elem->content);
+		elem = elem->next;
+	}
+} */

@@ -1,9 +1,9 @@
 #ifndef LIBFT_H
-# define LIBFT_h
+#define LIBFT_H
 
-#include <unistd.h>
-#include <stdlib.h>
-#include <stddef.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include <stddef.h>
 
 typedef struct		s_list
 {
@@ -18,12 +18,12 @@ int	ft_isascii(int c);
 int	ft_isprint(int c);
 
 size_t	ft_strlen(const char *c);
-size_t	ft_strlcpy(char *dst, char *src, size_t size);
-size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
+size_t	ft_strlcpy(char *dst, const char *src, size_t size);
+size_t	ft_strlcat(char *dst, const char *src, size_t size);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
-int	ft_strncmp(char *s1, char *s2, size_t n);
-char	*ft_strnstr(char *s1, char *s2, size_t len );
+int	ft_strncmp(const char *s1, const char *s2, size_t n);
+char	*ft_strnstr(const char *s1, const char *s2, size_t len );
 
 void	*ft_memset(void *s, int c, size_t n);
 void	ft_bzero(void *s, size_t n);
@@ -50,5 +50,15 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
+
+t_list	*ft_lstnew(void *content);
+int	ft_lstsize(t_list *lst);
+t_list *ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+t_list	*ft_lstlast(t_list *lst);
+void	ft_lstiter(t_list *lst, void (*f)(void *));
+void	ft_lstdelone(t_list *lst, void (*del)(void*));
+void	ft_lstclear(t_list **lst, void (*del)(void *));
+void	ft_lstadd_front(t_list **lst, t_list *new);
+void	ft_lstadd_back(t_list **lst, t_list *new);
 
 #endif

@@ -1,42 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yanthoma <yanthoma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/04 00:54:36 by yanthoma          #+#    #+#             */
-/*   Updated: 2022/04/04 00:54:36 by yanthoma         ###   ########.fr       */
+/*   Created: 2022/04/13 23:59:00 by yanthoma          #+#    #+#             */
+/*   Updated: 2022/04/13 23:59:00 by yanthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+
+t_list	*ft_lstlast(t_list *lst)
 {
-	if (!s)
+	if (!lst)
 		return (NULL);
-	while (*s)
-	{
-		if ((unsigned char)*s == (unsigned char)c)
-			return ((char *)s);
-		s++;
-	}
-	if (*s == c)
-		return ((char *)s);
-	return (NULL);
+	if (lst->next == NULL)
+		return (lst);
+	return (ft_lstlast(lst->next));
 }
 /*
 #include <stdio.h>
-#include <string.h>
-int main (void)
+int        main(int ac, char **av)
 {
-    char *c = "tripouille";
-    char *c1 = "tripouille";
-    char d = 'v';
+	(void)ac;
+	t_list	*elem;
+	t_list	*last;
 
-    printf("%s\n",ft_strchr(c1, 't' + 256));
-    //printf("%s\n", strchr(c, 300));
-    printf("%p\n", NULL);
-
-}*/
+	elem = ft_lstnew((void *)av[1]);
+	int i = 2;
+	
+	while (av[i])
+	{
+		ft_lstadd_front(&elem, ft_lstnew((void *)av[i]));
+		i++;
+	}
+	last = ft_lstlast(elem);
+		printf("%s\n", (char *)last->content);
+}*/	

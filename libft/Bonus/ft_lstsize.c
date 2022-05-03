@@ -1,40 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yanthoma <yanthoma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/04 00:24:36 by yanthoma          #+#    #+#             */
-/*   Updated: 2022/04/04 00:24:36 by yanthoma         ###   ########.fr       */
+/*   Created: 2022/04/13 23:37:42 by yanthoma          #+#    #+#             */
+/*   Updated: 2022/04/13 23:37:42 by yanthoma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+int	ft_lstsize(t_list *lst)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
-	while (i < n)
+	while (lst != NULL)
 	{
-		if (((unsigned char *)s)[i] == ((unsigned char)c))
-			return ((unsigned char *)s + i);
+		lst = lst->next;
 		i++;
 	}
-	return (NULL);
+	return (i);
 }
 /*
 #include <stdio.h>
-#include <string.h>
-int main (void)
-{  
-    char c[50] = "je ne veux pvas";
-    char c1[50] = "je ne veux pvas";
-    char d = 'v';
-    char *a = ft_memchr(c, 'v', 8);
-    //memchr(c1, 'v', 4);
-    printf("%s\n",a);
-    //printf("%s\n", memchr(c1, d, 10));
+int main (int ac, char **av)
+{
+	(void)ac;
+	t_list *elem;
+	int i;
+
+	i = 2;
+	elem = ft_lstnew((void *)av[1]);
+	while (av[i])
+	{
+		ft_lstadd_front(&elem, ft_lstnew((void *)av[i]));
+		i++;
+	}
+
+	printf("%d\n", ft_lstsize(elem));
+	while (elem != NULL)
+	{
+		printf("%s\n", (char *)elem->content);
+		elem = elem->next;
+	}
 }*/
