@@ -88,7 +88,7 @@ char	*clear_line_from_stash(char *stash)
 	ft_free(stash);
 	return (temp);
 }
-/*
+
 #include <stdio.h>
 
 int	main(int argc, char **argv)
@@ -100,11 +100,11 @@ int	main(int argc, char **argv)
 		return (1);
 	fd = open(argv[1], O_RDONLY);
 	str = get_next_line(fd);
-		printf("%s", str);
-		free(str);
-		str = get_next_line(fd);
-		printf("%s", str);
+	printf("%s", str);
+	free(str);
+	str = get_next_line(fd);
+	printf("%s", str);
 	free(str);
 	return (0);
 }
-*/
+

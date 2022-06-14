@@ -104,16 +104,16 @@ int	main(int argc, char **argv)
 	fd1 = open(argv[1], O_RDONLY);
 	fd2 = open(argv[2], O_RDONLY);
 	str1 = get_next_line(fd1);
-	printf("%s fd1 : ", str1);
+	printf(" fd1 : %s", str1);
 	free(str1);
 	str2 = get_next_line(fd2);
-	printf("%s fd2 : ", str2);
+	printf(" fd2 : %s", str2);
 	free(str2);
 	str1 = get_next_line(fd1);
-	printf("%s fd1 : ", str1);
+	printf(" fd1 : %s", str1);
 	free(str1);
 	str2 = get_next_line(fd2);
-	printf("%s fd2 : ", str2);
+	printf(" fd2 : %s", str2);
 	free(str2);
 	return (0);
 }
